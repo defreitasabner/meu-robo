@@ -10,12 +10,15 @@ long tempoAnterior = 0;
 
 void setup() {
   Serial.begin(9600);
+  sensorUltrassonico::initUltrassonico();
   pinMode(PIN_LED_VERDE, OUTPUT);
   pinMode(PIN_LED_AMARELO, OUTPUT);
   pinMode(PIN_LED_VERMELHO, OUTPUT);
 }
 
 void loop() {
+
+  sensorUltrassonico::dispararUltrassonico();
 
   long tempoRecente = millis();
   long variacaoTempo = tempoRecente - tempoAnterior;
