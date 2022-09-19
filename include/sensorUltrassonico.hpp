@@ -5,37 +5,42 @@
 
 namespace sensorUltrassonico {
 
-    long tempoRising;
-    long tempoFalling;
-    long variacaoTempoPulso;
-
-    long distancia;
+    double tempoRising;
+    double tempoFalling;
+    double variacaoTempoPulso;
+    
+    double distancia;
 
     // Funções do Interrupt
     void echoRisingISR();
     void echoFallingISR();
+    void calculaDistancia();
 
     void initUltrassonico() {
-        attachInterrupt(PIN_ULTRASSONICO_ECHO, echoRisingISR, RISING);
+        attachInterrupt(digitalPinToInterrupt(PIN_ULTRASSONICO_ECHO), echoRisingISR, RISING);
         pinMode(PIN_ULTRASSONICO_TRIGGER, OUTPUT);
     }
 
     void dispararUltrassonico() {
         digitalWrite(PIN_ULTRASSONICO_TRIGGER, HIGH);
+        delayMicroseconds(10);
+        digitalWrite(PIN_ULTRASSONICO_TRIGGER, LOW);
     }
 
     void echoRisingISR() {
         tempoRising = micros();
-        attachInterrupt(PIN_ULTRASSONICO_ECHO, echoFallingISR, FALLING);
+        attachInterrupt(digitalPinToInterrupt(PIN_ULTRASSONICO_ECHO), echoFallingISR, FALLING);
     }
 
     void echoFallingISR() {
         tempoFalling = micros();
-        variacaoTempoPulso = tempoFalling - tempoRising;
-        attachInterrupt(PIN_ULTRASSONICO_ECHO, echoRisingISR, RISING);
+        calculaDistancia();
+        attachInterrupt(digitalPinToInterrupt(PIN_ULTRASSONICO_ECHO), echoRisingISR, RISING);
+        dispararUltrassonico();
     }
 
     void calculaDistancia() {
+        variacaoTempoPulso = tempoFalling - tempoRising;
         distancia = (variacaoTempoPulso * 0.034) / 2;
     }
 
