@@ -1,5 +1,7 @@
 #include <Arduino.h>
 
+#include "sensorUltrassonico.hpp"
+
 #define PIN_LED_VERDE 4
 #define PIN_LED_AMARELO 7 
 #define PIN_LED_VERMELHO 8
@@ -7,6 +9,7 @@
 long tempoAnterior = 0;
 
 void setup() {
+  Serial.begin(9600);
   pinMode(PIN_LED_VERDE, OUTPUT);
   pinMode(PIN_LED_AMARELO, OUTPUT);
   pinMode(PIN_LED_VERMELHO, OUTPUT);
@@ -36,5 +39,7 @@ void loop() {
     digitalWrite(PIN_LED_VERMELHO, HIGH);
     tempoAnterior = tempoRecente;
   }
+
+  Serial.println(sensorUltrassonico::distancia);
 
 }
