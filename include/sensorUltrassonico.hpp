@@ -16,25 +16,25 @@ namespace sensorUltrassonico {
     void calculaDistancia();
 
     void initUltrassonico() {
-        attachInterrupt(digitalPinToInterrupt(pin::PIN_SENSOR_ULTRASSONICO_ECHO), echoRisingISR, RISING);
-        pinMode(pin::PIN_SENSOR_ULTRASSONICO_TRIGGER, OUTPUT);
+        attachInterrupt(digitalPinToInterrupt(pins::PIN_SENSOR_ULTRASSONICO_ECHO), echoRisingISR, RISING);
+        pinMode(pins::PIN_SENSOR_ULTRASSONICO_TRIGGER, OUTPUT);
     }
 
     void dispararUltrassonico() {
-        digitalWrite(pin::PIN_SENSOR_ULTRASSONICO_TRIGGER, HIGH);
+        digitalWrite(pins::PIN_SENSOR_ULTRASSONICO_TRIGGER, HIGH);
         delayMicroseconds(10);
-        digitalWrite(pin::PIN_SENSOR_ULTRASSONICO_TRIGGER, LOW);
+        digitalWrite(pins::PIN_SENSOR_ULTRASSONICO_TRIGGER, LOW);
     }
 
     void echoRisingISR() {
         tempoRising = micros();
-        attachInterrupt(digitalPinToInterrupt(pin::PIN_SENSOR_ULTRASSONICO_ECHO), echoFallingISR, FALLING);
+        attachInterrupt(digitalPinToInterrupt(pins::PIN_SENSOR_ULTRASSONICO_ECHO), echoFallingISR, FALLING);
     }
 
     void echoFallingISR() {
         tempoFalling = micros();
         calculaDistancia();
-        attachInterrupt(digitalPinToInterrupt(pin::PIN_SENSOR_ULTRASSONICO_ECHO), echoRisingISR, RISING);
+        attachInterrupt(digitalPinToInterrupt(pins::PIN_SENSOR_ULTRASSONICO_ECHO), echoRisingISR, RISING);
         dispararUltrassonico();
     }
 
