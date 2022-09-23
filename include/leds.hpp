@@ -2,6 +2,7 @@
 
 #include "pinagem.hpp"
 
+#pragma once
 
 namespace leds {
     

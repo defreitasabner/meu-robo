@@ -2,6 +2,8 @@
 
 #include "pinagem.hpp"
 
+#pragma once
+
 namespace sensorUltrassonico {
 
     double tempoRising;

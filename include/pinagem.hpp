@@ -1,3 +1,5 @@
+#pragma once
+
 namespace pins {
     // pinagem LEDs
     const unsigned short int PIN_LED_VERDE = 4;
