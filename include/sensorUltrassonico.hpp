@@ -1,7 +1,6 @@
 #include <Arduino.h>
 
-#define PIN_ULTRASSONICO_ECHO 2
-#define PIN_ULTRASSONICO_TRIGGER 12
+#include "pinagem.hpp"
 
 namespace sensorUltrassonico {
 
@@ -11,31 +10,31 @@ namespace sensorUltrassonico {
     
     double distancia;
 
-    // Funções do Interrupt
+    // Protótipos das funções de Interrupt
     void echoRisingISR();
     void echoFallingISR();
     void calculaDistancia();
 
     void initUltrassonico() {
-        attachInterrupt(digitalPinToInterrupt(PIN_ULTRASSONICO_ECHO), echoRisingISR, RISING);
-        pinMode(PIN_ULTRASSONICO_TRIGGER, OUTPUT);
+        attachInterrupt(digitalPinToInterrupt(pin::PIN_SENSOR_ULTRASSONICO_ECHO), echoRisingISR, RISING);
+        pinMode(pin::PIN_SENSOR_ULTRASSONICO_TRIGGER, OUTPUT);
     }
 
     void dispararUltrassonico() {
-        digitalWrite(PIN_ULTRASSONICO_TRIGGER, HIGH);
+        digitalWrite(pin::PIN_SENSOR_ULTRASSONICO_TRIGGER, HIGH);
         delayMicroseconds(10);
-        digitalWrite(PIN_ULTRASSONICO_TRIGGER, LOW);
+        digitalWrite(pin::PIN_SENSOR_ULTRASSONICO_TRIGGER, LOW);
     }
 
     void echoRisingISR() {
         tempoRising = micros();
-        attachInterrupt(digitalPinToInterrupt(PIN_ULTRASSONICO_ECHO), echoFallingISR, FALLING);
+        attachInterrupt(digitalPinToInterrupt(pin::PIN_SENSOR_ULTRASSONICO_ECHO), echoFallingISR, FALLING);
     }
 
     void echoFallingISR() {
         tempoFalling = micros();
         calculaDistancia();
-        attachInterrupt(digitalPinToInterrupt(PIN_ULTRASSONICO_ECHO), echoRisingISR, RISING);
+        attachInterrupt(digitalPinToInterrupt(pin::PIN_SENSOR_ULTRASSONICO_ECHO), echoRisingISR, RISING);
         dispararUltrassonico();
     }
 
