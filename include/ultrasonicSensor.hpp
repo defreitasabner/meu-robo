@@ -4,8 +4,8 @@
 
 #pragma once
 
-namespace ultrasonicSensor {
-
+namespace ultrasonicSensor 
+{
     double risingTime;
     double fallingTime;
     double timeVariation;
@@ -16,32 +16,36 @@ namespace ultrasonicSensor {
     void echoFallingISR();
     void calculateDistance();
 
-    void initUltrasonicSensor() {
+    void init() 
+    {
         attachInterrupt(digitalPinToInterrupt(pins::PIN_ULTRASONIC_SENSOR_ECHO), echoRisingISR, RISING);
         pinMode(pins::PIN_ULTRASONIC_SENSOR_TRIGGER, OUTPUT);
     }
 
-    void ultrasonicTrigger() {
+    void pulse() 
+    {
         digitalWrite(pins::PIN_ULTRASONIC_SENSOR_TRIGGER, HIGH);
         delayMicroseconds(10);
         digitalWrite(pins::PIN_ULTRASONIC_SENSOR_TRIGGER, LOW);
     }
 
-    void echoRisingISR() {
+    void echoRisingISR() 
+    {
         risingTime = micros();
         attachInterrupt(digitalPinToInterrupt(pins::PIN_ULTRASONIC_SENSOR_ECHO), echoFallingISR, FALLING);
     }
 
-    void echoFallingISR() {
+    void echoFallingISR() 
+    {
         fallingTime = micros();
         calculateDistance();
         attachInterrupt(digitalPinToInterrupt(pins::PIN_ULTRASONIC_SENSOR_ECHO), echoRisingISR, RISING);
-        ultrasonicTrigger();
+        pulse();
     }
 
-    void calculateDistance() {
+    void calculateDistance() 
+    {
         timeVariation = fallingTime - risingTime;
         distance = (timeVariation * 0.034) / 2;
     }
-
 }

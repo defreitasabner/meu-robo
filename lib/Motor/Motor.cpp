@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include "Motor.hpp"
 
 Motor::Motor(int pinFoward, int pinBackward)

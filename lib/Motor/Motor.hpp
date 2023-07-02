@@ -7,7 +7,7 @@ class Motor
         unsigned short int _pinBackward;
 
     public:
-        explicit Motor(int pinFoward, int pinBackward);
+        Motor(int pinFoward, int pinBackward);
         void init();
         void forward(int velocity);
         void backward(int velocity);
