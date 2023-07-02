@@ -1,15 +1,15 @@
 #include <Arduino.h>
 
-#include "sensorUltrassonico.hpp"
+#include "ultrasonicSensor.hpp"
 #include "leds.hpp"
 
 void setup() {
-  sensorUltrassonico::initUltrassonico();
+  Serial.begin(9600);
+  ultrasonicSensor::initUltrasonicSensor();
   leds::initLeds();
 }
 
 void loop() {
-
-  leds::verificaLeds(sensorUltrassonico::distancia);
-
+  leds::verifyDistance(ultrasonicSensor::distance);
+  //Serial.println(String(ultrasonicSensor::distance));
 }

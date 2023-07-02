@@ -1,66 +1,66 @@
 #include <Arduino.h>
 
-#include "pinagem.hpp"
+#include "pins.hpp"
 
 #pragma once
 
 namespace leds {
     
     void initLeds() {
-        pinMode(pins::PIN_LED_VERDE, OUTPUT);
-        pinMode(pins::PIN_LED_AMARELO, OUTPUT);
-        pinMode(pins::PIN_LED_VERMELHO, OUTPUT);
+        pinMode(pins::PIN_GREEN_LED, OUTPUT);
+        pinMode(pins::PIN_YELLOW_LED, OUTPUT);
+        pinMode(pins::PIN_RED_LED, OUTPUT);
     }
 
-    void ligarLedVerde() {
-        digitalWrite(pins::PIN_LED_VERDE, HIGH); 
+    void greenLedOn() {
+        digitalWrite(pins::PIN_GREEN_LED, HIGH); 
     }
 
-    void desligarLedVerde() {
-        digitalWrite(pins::PIN_LED_VERDE, LOW); 
+    void greenLedOff() {
+        digitalWrite(pins::PIN_GREEN_LED, LOW); 
     }
 
-    void ligarLedAmarelo() {
-        digitalWrite(pins::PIN_LED_AMARELO, HIGH);
+    void yellowLedOn() {
+        digitalWrite(pins::PIN_YELLOW_LED, HIGH);
     }
 
-    void desligarLedAmarelo() {
-        digitalWrite(pins::PIN_LED_AMARELO, LOW); 
+    void yellowLedOff() {
+        digitalWrite(pins::PIN_YELLOW_LED, LOW); 
     }
 
 
-    void ligarLedVermelho() {
-        digitalWrite(pins::PIN_LED_VERMELHO, HIGH);
+    void redLedOn() {
+        digitalWrite(pins::PIN_RED_LED, HIGH);
     }
 
-    void desligarLedVermelho() {
-        digitalWrite(pins::PIN_LED_VERMELHO, LOW); 
+    void redLedOff() {
+        digitalWrite(pins::PIN_RED_LED, LOW); 
     }
 
-    void verificaLeds(long distancia) {
+    void verifyDistance(long distance) {
         
-        if(distancia < 100 && distancia >= 50) {
-            ligarLedVerde();
-            desligarLedAmarelo();
-            desligarLedVermelho();
+        if(distance < 100 && distance >= 50) {
+            greenLedOn();
+            yellowLedOff();
+            redLedOff();
         }
         
-        else if(distancia < 50 && distancia >= 5) {
-            desligarLedVerde();
-            ligarLedAmarelo();
-            desligarLedVermelho();
+        else if(distance < 50 && distance >= 5) {
+            greenLedOff();
+            yellowLedOn();
+            redLedOff();
         }
         
-        else if(distancia < 5) {
-            desligarLedVerde();
-            desligarLedAmarelo();
-            ligarLedVermelho();
+        else if(distance < 5) {
+            greenLedOff();
+            yellowLedOff();
+            redLedOn();
         }
 
         else {
-            desligarLedVerde();
-            desligarLedAmarelo();
-            desligarLedVermelho();
+            greenLedOff();
+            yellowLedOff();
+            redLedOff();
         }
     }
 
