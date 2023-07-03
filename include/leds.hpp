@@ -7,9 +7,9 @@
 
 namespace leds {
 
-    Led greenLed(pins::PIN_GREEN_LED);
-    Led yellowLed(pins::PIN_YELLOW_LED);
-    Led redLed(pins::PIN_RED_LED);
+    Led greenLed(pins::leds::GREEN);
+    Led yellowLed(pins::leds::YELLOW);
+    Led redLed(pins::leds::RED);
     
     void init() 
     {
