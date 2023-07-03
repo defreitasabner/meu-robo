@@ -7,11 +7,12 @@
 void setup() {
   Serial.begin(9600);
   ultrasonicSensor::init();
-  locomotion::init();
+  locomotion::motors.init();
   leds::init();
 }
 
 void loop() {
+  locomotion::motors.forward(100);
   leds::verifyDistance(ultrasonicSensor::distance);
   //Serial.println(String(ultrasonicSensor::distance));
 }
