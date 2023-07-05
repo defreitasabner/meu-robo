@@ -1,12 +1,11 @@
 #include "PID.hpp"
 
-PID::PID(double min, double max, double Kp, double Ki, double Kd, double derivativeTime):
+PID::PID(double min, double max, double Kp, double Ki, double Kd):
 _min(min),
 _max(max),
 _Kp(Kp),
 _Ki(Ki),
 _Kd(Kd),
-_derivativeTime(derivativeTime),
 _previousError(0),
 _integral(0)
 {
@@ -14,6 +13,7 @@ _integral(0)
 
 double PID::calculate(double target, double read)
 {
+    _derivativeTime = millis() - _derivativeTime;
     double currentError = target - read;
     
     // Proportional

@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #pragma once
 
 class PID 
@@ -17,8 +18,7 @@ class PID
             double max,
             double Kp,
             double Ki,
-            double Kd,
-            double derivativeTime
+            double Kd
         );
         double calculate(double target, double read);
         void reset();
