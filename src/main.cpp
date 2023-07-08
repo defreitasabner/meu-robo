@@ -2,22 +2,31 @@
 
 #include "ultrasonicSensor.hpp"
 #include "locomotion.hpp"
+#include "soundSensor.hpp"
 
 void setup() {
   Serial.begin(9600);
   ultrasonicSensor::init();
+  soundSensor::init();
   locomotion::init();
 }
 
 void loop() {
-  if(ultrasonicSensor::distance > 10)
+  soundSensor::detect();
+  if(soundSensor::isActive) 
   {
-    locomotion::forward();
-    Serial.println("Indo para frente");
-  }
-  else
+    Serial.println("Parado!");
+  } 
+  else 
   {
-    locomotion::backward();
-    Serial.println("Indo para trás");
+    Serial.println("Andando!");
+    if(ultrasonicSensor::distance < 20)
+    {
+      locomotion::brake();
+    }
+    else
+    {
+      locomotion::forward();
+    }
   }
 }

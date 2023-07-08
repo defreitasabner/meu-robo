@@ -13,6 +13,7 @@ namespace pins
     {
         const unsigned short int ULTRASONIC_ECHO = 2;
         const unsigned short int ULTRASONIC_TRIGGER = 12;
+        const unsigned short int SOUND = 5;
     }
 
     namespace motors 
