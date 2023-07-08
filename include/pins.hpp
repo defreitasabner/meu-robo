@@ -4,9 +4,9 @@ namespace pins
 {
     namespace leds 
     {
-        const unsigned short int GREEN = 4;
-        const unsigned short int YELLOW = 7; 
-        const unsigned short int RED = 8;
+        const unsigned short int GREEN = 3;
+        const unsigned short int YELLOW = 5; 
+        const unsigned short int RED = 6;
     }
 
     namespace sensors 
@@ -17,9 +17,9 @@ namespace pins
 
     namespace motors 
     {
-        const unsigned short int LEFT_FORWARD = 5;
-        const unsigned short int LEFT_BACKWARD = 6;
-        const unsigned short int RIGHT_FORWARD = 9;
-        const unsigned short int RIGHT_BACKWARD = 10;
+        const unsigned short int LEFT_FORWARD = 4;
+        const unsigned short int LEFT_BACKWARD = 7;
+        const unsigned short int RIGHT_FORWARD = 8;
+        const unsigned short int RIGHT_BACKWARD = 13;
     }
 }
