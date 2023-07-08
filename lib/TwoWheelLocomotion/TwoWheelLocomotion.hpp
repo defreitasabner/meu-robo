@@ -13,6 +13,6 @@ class TwoWheelLocomotion {
         );
         void init();
         void brake();
-        void forward(int velocity);
-        void backward(int velocity);
+        void forward();
+        void backward();
 };

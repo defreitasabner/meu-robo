@@ -23,14 +23,14 @@ void TwoWheelLocomotion::brake()
     _rightMotor.brake();
 }
 
-void TwoWheelLocomotion::forward(int velocity)
+void TwoWheelLocomotion::forward()
 {
-    _leftMotor.forward(velocity);
-    _rightMotor.forward(velocity);
+    _leftMotor.forward();
+    _rightMotor.forward();
 }
 
-void TwoWheelLocomotion::backward(int velocity)
+void TwoWheelLocomotion::backward()
 {
-    _leftMotor.backward(velocity);
-    _rightMotor.backward(velocity);
+    _leftMotor.backward();
+    _rightMotor.backward();
 }

@@ -9,7 +9,7 @@ class Motor
     public:
         Motor(int pinFoward, int pinBackward);
         void init();
-        void forward(int velocity);
-        void backward(int velocity);
+        void forward();
+        void backward();
         void brake();
 };

@@ -13,18 +13,18 @@ void Motor::init()
     pinMode(_pinBackward, OUTPUT);
 }
 
-void Motor::forward(int velocity) 
+void Motor::forward() 
 {
-    analogWrite(_pinForward, velocity);
+    digitalWrite(_pinForward, HIGH);
 }
 
-void Motor::backward(int velocity) 
+void Motor::backward() 
 {
-    analogWrite(_pinBackward, velocity);
+    digitalWrite(_pinBackward, HIGH);
 }
 
 void Motor::brake() 
 {
-    analogWrite(_pinForward, 0);
-    analogWrite(_pinBackward, 0);
+    digitalWrite(_pinForward, LOW);
+    digitalWrite(_pinBackward, LOW);
 }
