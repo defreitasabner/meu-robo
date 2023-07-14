@@ -1,10 +1,10 @@
 #include "TwoWheelLocomotion.hpp"
 
 TwoWheelLocomotion::TwoWheelLocomotion(
-    int leftMotorForwardPin, 
-    int leftMotorBackwardPin, 
-    int rightMotorForwardPin, 
-    int rightMotorBackwardPin
+    const unsigned short int leftMotorForwardPin, 
+    const unsigned short int leftMotorBackwardPin, 
+    const unsigned short int rightMotorForwardPin, 
+    const unsigned short int rightMotorBackwardPin
 ):
 _leftMotor(leftMotorForwardPin, leftMotorBackwardPin),
 _rightMotor(rightMotorForwardPin, rightMotorBackwardPin) 

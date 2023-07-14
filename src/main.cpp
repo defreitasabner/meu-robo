@@ -8,7 +8,7 @@ void setup() {
   Serial.begin(9600);
   ultrasonicSensor::init();
   soundSensor::init();
-  locomotion::init();
+  locomotion::motors.init();
 }
 
 void loop() {
@@ -22,11 +22,11 @@ void loop() {
     Serial.println("Andando!");
     if(ultrasonicSensor::distance < 20)
     {
-      locomotion::brake();
+      locomotion::motors.brake();
     }
     else
     {
-      locomotion::forward();
+      locomotion::motors.forward();
     }
   }
 }

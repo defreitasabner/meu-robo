@@ -6,10 +6,10 @@ class TwoWheelLocomotion {
         Motor _rightMotor;
     public:
         TwoWheelLocomotion(
-            int leftMotorForwardPin, 
-            int leftMotorBackwardPin,
-            int rightMotorForwardPin,
-            int rightMotorBackwardPin
+            const unsigned short int leftMotorForwardPin, 
+            const unsigned short int leftMotorBackwardPin,
+            const unsigned short int rightMotorForwardPin,
+            const unsigned short int rightMotorBackwardPin
         );
         void init();
         void brake();
