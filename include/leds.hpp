@@ -1,67 +1,51 @@
 #include <Arduino.h>
 
-#include "pinagem.hpp"
+#include "pins.hpp"
+#include "Led.hpp"
 
 #pragma once
 
 namespace leds {
+
+    Led greenLed(pins::leds::GREEN);
+    Led yellowLed(pins::leds::YELLOW);
+    Led redLed(pins::leds::RED);
     
-    void initLeds() {
-        pinMode(pins::PIN_LED_VERDE, OUTPUT);
-        pinMode(pins::PIN_LED_AMARELO, OUTPUT);
-        pinMode(pins::PIN_LED_VERMELHO, OUTPUT);
+    void init() 
+    {
+        greenLed.init();
+        yellowLed.init();
+        redLed.init();
     }
 
-    void ligarLedVerde() {
-        digitalWrite(pins::PIN_LED_VERDE, HIGH); 
-    }
-
-    void desligarLedVerde() {
-        digitalWrite(pins::PIN_LED_VERDE, LOW); 
-    }
-
-    void ligarLedAmarelo() {
-        digitalWrite(pins::PIN_LED_AMARELO, HIGH);
-    }
-
-    void desligarLedAmarelo() {
-        digitalWrite(pins::PIN_LED_AMARELO, LOW); 
-    }
-
-
-    void ligarLedVermelho() {
-        digitalWrite(pins::PIN_LED_VERMELHO, HIGH);
-    }
-
-    void desligarLedVermelho() {
-        digitalWrite(pins::PIN_LED_VERMELHO, LOW); 
-    }
-
-    void verificaLeds(long distancia) {
-        
-        if(distancia < 100 && distancia >= 50) {
-            ligarLedVerde();
-            desligarLedAmarelo();
-            desligarLedVermelho();
+    void verifyDistance(long distance) 
+    {    
+        if(distance < 100 && distance >= 50) 
+        {
+            greenLed.on();
+            yellowLed.off();
+            redLed.off();
         }
         
-        else if(distancia < 50 && distancia >= 5) {
-            desligarLedVerde();
-            ligarLedAmarelo();
-            desligarLedVermelho();
+        else if(distance < 50 && distance >= 5) 
+        {
+            greenLed.off();
+            yellowLed.on();
+            redLed.off();
         }
         
-        else if(distancia < 5) {
-            desligarLedVerde();
-            desligarLedAmarelo();
-            ligarLedVermelho();
+        else if(distance < 5) 
+        {
+            greenLed.off();
+            yellowLed.off();
+            redLed.on();
         }
 
-        else {
-            desligarLedVerde();
-            desligarLedAmarelo();
-            desligarLedVermelho();
+        else 
+        {
+            greenLed.off();
+            yellowLed.off();
+            redLed.off();
         }
     }
-
 }

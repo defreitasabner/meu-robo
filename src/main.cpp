@@ -1,15 +1,32 @@
 #include <Arduino.h>
 
-#include "sensorUltrassonico.hpp"
-#include "leds.hpp"
+#include "ultrasonicSensor.hpp"
+#include "locomotion.hpp"
+#include "soundSensor.hpp"
 
 void setup() {
-  sensorUltrassonico::initUltrassonico();
-  leds::initLeds();
+  Serial.begin(9600);
+  ultrasonicSensor::init();
+  soundSensor::init();
+  locomotion::motors.init();
 }
 
 void loop() {
-
-  leds::verificaLeds(sensorUltrassonico::distancia);
-
+  soundSensor::detect();
+  if(soundSensor::isActive) 
+  {
+    Serial.println("Parado!");
+  } 
+  else 
+  {
+    Serial.println("Andando!");
+    if(ultrasonicSensor::distance < 20)
+    {
+      locomotion::motors.brake();
+    }
+    else
+    {
+      locomotion::motors.forward();
+    }
+  }
 }
