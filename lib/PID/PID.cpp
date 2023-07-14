@@ -7,14 +7,15 @@ _Kp(Kp),
 _Ki(Ki),
 _Kd(Kd),
 _previousError(0),
-_integral(0)
+_integral(0),
+_derivativeTime(0)
 {
 }
 
 double PID::calculate(double target, double read)
 {
     _derivativeTime = millis() - _derivativeTime;
-    double currentError = target - read;
+    double currentError = read - target;
     
     // Proportional
     double Pout = _Kp * currentError;
