@@ -6,6 +6,10 @@ Tudo começa com uma ideia bem simples: um robô que apenas anda em linha reta e
 <div style="display: flex">
     <img  src="docs/img/pinocch-io-frontal.jpeg" alt="Pinocch-IO Protótipo (frontal)"
     width="200">
+    <img  src="docs/img/pinocch-io.jpeg" alt="Pinocch-IO Protótipo (frontal)"
+    width="200">
+    <img  src="docs/img/pinocch-io-lateral.jpeg" alt="Pinocch-IO Protótipo (frontal)"
+    width="200">
     <img  src="docs/img/pinocch-io-posterior.jpeg" alt="Pinocch-IO Protótipo (frontal)"
     width="200">
 </div>
